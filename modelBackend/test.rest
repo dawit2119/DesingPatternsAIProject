@@ -1,0 +1,72 @@
+post http://localhost:5000/api/signup 
+Content-Type: application/json
+
+{
+    "fullName":"Employer one",
+    "email":"empone",
+    "password":"password",
+
+    "confirmPassword":"password",
+    "role":"employer"
+
+}
+
+###
+post http://localhost:5000/api/login 
+Content-Type: application/json
+
+{
+    "email":"emailone",
+    "password":"password"
+}
+###
+post http://localhost:5000/api/employer/postjob
+Content-Type: application/json
+
+{
+    "postedBy":"61df566ff808559de2a6feba",
+    "requiredEmployees":3,
+    "availableUntil":"1/14/2022",
+    "jobDescription":"Software Developer",
+    "jobName":"Flutter",
+    "requirements":[
+        {"input":"good understanding of flutter","output":{"percentage":1}},
+        {"input":"ability to problems effectively","output":{"percentage":0.8}},
+        {"input":"good communication skills","output":{"percentage":0.6}},
+        {"input":"dart and object oriented programming","output":{"percentage":0.4}}
+        ]
+
+}
+###
+
+get http://localhost:5000/api/employer/getappliedemployees/61df58237dc86b805cab18d7
+
+###
+get http://localhost:5000/api/employer/selectedemployees/61df58237dc86b805cab18d7
+
+###
+post http://localhost:5000/api/employee/applytojob
+Content-Type: application/json
+
+{
+    "appliedBy":"61dde1a76d8c4218f1bc85c6",
+    "appliedFor":"61df6cbe0d74b78353aceb86",
+    "proposal":[
+        "I am good programmer",
+        "I am problem solver",
+        "I have good understanindg of flutter",
+        "I am profecient with Object Oriented Programming"
+    ]
+
+}
+###
+get http://localhost:5000/api/employee/61dde1a76d8c4218f1bc85c6/myapplications
+
+###
+
+delete http://localhost:5000/api/employee/myapplications/61df7d95e685322d0573f448
+Content-Type: application/json
+
+{
+    "appliedBy":"61dde1a76d8c4218f1bc85c6"
+}

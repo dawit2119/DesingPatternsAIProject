@@ -1,0 +1,13 @@
+const express = require("express")
+const brain = require("brain.js")
+const mongoose = require("mongoose")
+const dotenv = require("dotenv")
+const Router = require("./Routes/routes")
+dotenv.config()
+const app = express()
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
+app.use("/api",Router)
+mongoose.connect(process.env.DATABASE_URI).then(()=>{
+    app.listen(process.env.PORT,()=>console.log(`Server is running at port ${process.env.PORT}`))
+}).catch((error)=>console.log(error))
